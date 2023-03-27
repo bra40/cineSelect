@@ -3,25 +3,26 @@
   --clr-primary-750: #434343;
   --clr-secondary-500: #616161;
 
+  // Font Family
   --ff-primary: "Hind Siliguri", sans-serif;
   --ff-accent: "Mukta", sans-serif;
   --ff-secondary: "Sarala", sans-serif;
-
+  // Font Family Asigned
   --ff-title: var(--ff-primary);
   --ff-sub: var(--ff-accent);
   --ff-body: var(--ff-secondary);
 
+  // Font Weight
   --fw-skinny: 100;
   --fw-regular: 500;
   --fw-bold: 900;
 
   --letter-spacing: 0.2em;
 
+  // Padding
   --padding: 1rem;
   --padding-2: calc(2 * var(--padding));
   --padding-3: calc(3 * var(--padding));
-
-  --fs-init: 0.625rem;
 
   // --fs-200: 1.2rem;
   // --fs-300: 1.6rem;
@@ -34,27 +35,23 @@
   // --fs-900: 9rem;
 
   // experimental clamp transitions
-  // --fs-200: clamp(1.2rem, -3.3rem + 6vw, 1.5rem);
+  --fs-200: clamp(1.2rem, -3.3rem + 6vw, 1.5rem);
   // --fs-250: clamp(var(--fs-200), 2.5vw, var(--fs-body));
   // --fs-300: clamp(1.6rem, -1.4rem + 4vw, 1.8rem);
   --fs-400: clamp(1.8rem, -5.7rem + 10vw, 2.3rem);
   // --fs-450: clamp(2.1rem, -5.4rem + 10vw, 2.6rem);
   // --fs-500: clamp(2.5rem, -6.5rem + 12vw, 3.1rem);
   // --fs-500: clamp(2.7rem, -6.5rem + 12.2vw, 3.3rem);
-  // --fs-600: clamp(3rem, -9rem + 16vw, 3.8rem);
+  --fs-600: clamp(3rem, -9rem + 16vw, 3.8rem);
   // --fs-700: clamp(3.5rem, -10rem + 18vw, 4.4rem);
-  // --fs-800: clamp(5rem, -14.5rem + 26vw, 6.3rem);
+  --fs-800: clamp(5rem, -14.5rem + 26vw, 6.3rem);
   // --fs-900: clamp(9rem, -25.5rem + 46vw, 11.3rem);
 
-  // --fs-label: var(--fs-250);
-  // --fs-button: var(--fs-300);
+  // Font Size
+  --fs-button: var(--fs-200);
   --fs-body: var(--fs-400);
-  // --fs-logline: var(--fs-450);
-  // --fs-title: var(--fs-500);
-  // --fs-title-hover: var(--fs-550);
-  // --fs-sub-heading: var(--fs-600);
-  // --fs-heading: var(--fs-700);
-  // --fs-name: var(--fs-800);
+  --fs-sub: var(--fs-600);
+  --fs-title: var(--fs-800);
 
   // --NavDynamicHeight: 0;
 }
@@ -73,7 +70,6 @@ html {
 body {
   font-size: 1.1rem;
 }
-
 
 //Reset
 body,
@@ -453,43 +449,47 @@ a {
   text-shadow: 1px 1px 2px var(--clr-accent-900);
 }
 
-.fw-bold {
-  font-weight: var(--fw-bold);
-}
-.fw-semi-bold {
-  font-weight: var(--fw-semi-bold);
-}
-.fw-regular {
-  font-weight: var(--fw-regular);
-}
-
-// Font Size
-.fs-heading {
-  font-size: var(--fs-title);
-}
-.fs-sub-heading {
-  font-size: var(--fs-sub);
-}
-.fs-body {
-  font-size: var(--fs-body);
-}
-.fs-button {
-  font-size: var(--fs-button);
-}
+// ---------------
+// Styling Classes
+// ---------------
 
 // Font Family
-.ff-accent {
-  font-family: var(--ff-accent);
+.ff-title {
+  font-family: var(--ff-title);
 }
-
+.ff-sub {
+  font-family: var(--ff-sub);
+}
 .ff-body {
   font-family: var(--ff-body);
 }
 
-.ff-heading {
-  font-family: var(--ff-heading);
+// Font Weight
+.fw-skinny {
+  font-weight: var(--fw-skinny);
+}
+.fw-regular {
+  font-weight: var(--fw-regular);
+}
+.fw-bold {
+  font-weight: var(--fw-bold);
 }
 
-.pointer {
+// Font Size
+.fs-button {
+  font-size: var(--fs-button);
+}
+.fs-body {
+  font-size: var(--fs-body);
+}
+.fs-sub {
+  font-size: var(--fs-sub);
+}
+.fs-title {
+  font-size: var(--fs-title);
+}
+
+// Cursor Type
+.cursor-pointer {
   cursor: pointer;
 }
