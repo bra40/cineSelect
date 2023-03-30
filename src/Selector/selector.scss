@@ -1,0 +1,26 @@
+.SelectorContainer {  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "poster-one poster-two poster-three"
+    "poster-one poster-two poster-three"
+    "num-one num-two num-three";
+}
+
+.poster-one { grid-area: poster-one; }
+
+.poster-two { grid-area: poster-two; }
+
+.poster-three { grid-area: poster-three; }
+
+.num-one { grid-area: num-one; }
+
+.num-two { grid-area: num-two; }
+
+.num-three { grid-area: num-three; }
+
+*[class*="rank"] {
+  text-align: center;
+}

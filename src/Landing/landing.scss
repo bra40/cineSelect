@@ -1,0 +1,54 @@
+.Cine-Select-Title {
+  //   text-align: center;
+  //   border: red 3px solid;
+  //   text-align: center;
+  //   line-height: 1em;
+
+  //   word-wrap: break-word;
+  //   overflow-wrap: break-word;
+  display: flex;
+  flex-direction: column;
+  line-height: 1em;
+//   border: yellowgreen 9px solid;
+}
+
+.LandingComponentContainer {
+//   border: rgb(255, 166, 0) 9px solid;
+  display: flex;
+  flex-direction: column;
+}
+
+.LandingSVGContainer {
+  display: flex;
+  align-items: flex-start;
+  justify-self: flex-start;
+  flex-grow: 1;
+  flex-direction: column;
+//   border: rgb(0, 149, 255) 9px solid;
+}
+
+.LandingHeaderContainer {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+//   border: rgb(255, 0, 25) 9px solid;
+}
+
+.LandingTextContainer {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+//   border: orange 9px solid;
+}
+
+.LandingFooter {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  justify-self: flex-end;
+  flex-grow: 1;
+//   border: blueviolet 9px solid;
+  text-align: center;
+}

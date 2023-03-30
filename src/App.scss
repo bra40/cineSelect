@@ -4,48 +4,49 @@
   --clr-secondary-500: #616161;
 
   // Font Family
-  --ff-primary: "Hind Siliguri", sans-serif;
-  --ff-accent: "Mukta", sans-serif;
-  --ff-secondary: "Sarala", sans-serif;
+  --ff-primary: 'Sarabun', sans-serif;;
+  --ff-accent: 'Lato', sans-serif;
+  --ff-secondary: 'Lato', sans-serif;
+  
+  // Old Font Family
+  // --ff-primary: "Hind Siliguri", sans-serif;
+  // --ff-accent: "Mukta", sans-serif;
+  // --ff-secondary: "Sarala", sans-serif;
+
+
   // Font Family Asigned
-  --ff-title: var(--ff-primary);
-  --ff-sub: var(--ff-accent);
   --ff-body: var(--ff-secondary);
+  --ff-sub: var(--ff-accent);
+  --ff-title: var(--ff-primary);
 
   // Font Weight
   --fw-skinny: 100;
   --fw-regular: 500;
   --fw-bold: 900;
 
+  // Spacing
   --letter-spacing: 0.2em;
 
   // Padding
-  --padding: 1rem;
-  --padding-2: calc(2 * var(--padding));
-  --padding-3: calc(3 * var(--padding));
+  --padding-1: 1rem;
+  --padding-2: calc(2 * var(--padding-1));
+  --padding-3: calc(3 * var(--padding-1));
 
-  // --fs-200: 1.2rem;
-  // --fs-300: 1.6rem;
+  // Padding
+  --padding-em-1: 1em;
+  --padding-em-2: calc(2 * var(--padding-em-1));
+  --padding-em-3: calc(3 * var(--padding-em-1));
+
+  --fs-200: 1.2rem;
   --fs-400: 1.8rem;
-  // --fs-450: 2.1rem;
-  // --fs-500: 2.5rem;
-  // --fs-600: 3rem;
-  // --fs-700: 3.5rem;
-  // --fs-800: 5rem;
-  // --fs-900: 9rem;
+  --fs-600: 3rem;
+  --fs-800: 8rem;
 
   // experimental clamp transitions
   --fs-200: clamp(1.2rem, -3.3rem + 6vw, 1.5rem);
-  // --fs-250: clamp(var(--fs-200), 2.5vw, var(--fs-body));
-  // --fs-300: clamp(1.6rem, -1.4rem + 4vw, 1.8rem);
   --fs-400: clamp(1.8rem, -5.7rem + 10vw, 2.3rem);
-  // --fs-450: clamp(2.1rem, -5.4rem + 10vw, 2.6rem);
-  // --fs-500: clamp(2.5rem, -6.5rem + 12vw, 3.1rem);
-  // --fs-500: clamp(2.7rem, -6.5rem + 12.2vw, 3.3rem);
   --fs-600: clamp(3rem, -9rem + 16vw, 3.8rem);
-  // --fs-700: clamp(3.5rem, -10rem + 18vw, 4.4rem);
-  --fs-800: clamp(5rem, -14.5rem + 26vw, 6.3rem);
-  // --fs-900: clamp(9rem, -25.5rem + 46vw, 11.3rem);
+  // --fs-800: clamp(5rem, -14.5rem + 26vw, 6.3rem);
 
   // Font Size
   --fs-button: var(--fs-200);
@@ -63,19 +64,15 @@ $media-400: 50em;
 $media-600: 60em;
 $media-800: 84em;
 
+//Reset
 html {
   font-size: 62.5%;
 }
 
-body {
-  font-size: 1.1rem;
-}
-
-//Reset
 body,
 html {
-  // height: 100%;
-  background: var(--clr-primary-900);
+  background: var(--clr-primary-750);
+  color: var(--clr-primary-250);
   /* mobile viewport bug fix */
   min-height: -webkit-fill-available;
   min-height: 100vh;
@@ -146,312 +143,131 @@ a {
   }
 }
 
+// ---------------
 // General Styling
-.textBody {
-  // box-model
-  padding: 0 0 2rem 0;
-  // type
-  // font-size: var(--fs-body);
-  font-weight: var(--fw-regular);
-  font-family: var(--ff-body);
-  color: var(--clr-primary-400);
+// ---------------
 
-  &.noPad {
-    // box-model
-    padding: 0;
-  }
-}
-
-.title {
-  // box-model
-  padding: 0.75rem 0;
-  // type
-  // font-size: var(--fs-title);
+.base-button {
+  font-size: var(--fs-body);
   font-weight: var(--fw-bold);
-  font-family: var(--ff-body);
-  color: var(--clr-primary-900);
-
-  &.noPad {
-    padding: 0;
-  }
+  font-family: var(--ff-sub);
+  color: var(--clr-primary-250);
+  background-color: var(--clr-secondary-500);
 }
 
-.label {
-  // box-model
-  padding: 0.05em 0.3em;
-  background-color: var(--clr-dark);
-  // type
-  // font-size: var(--fs-label);
-  font-weight: var(--fw-regular);
-  font-family: var(--ff-body);
-  color: var(--clr-neutral-400);
-  letter-spacing: var(--letter-spacing);
-  // misc
-  border-radius: 0.25em;
-}
-
-.subHeading {
-  // type
-  // font-size: var(--fs-sub-heading);
-  font-weight: var(--fw-semi-bold);
-  font-family: var(--ff-heading);
-  color: var(--clr-primary-400);
-  text-align: center;
-  line-height: 1;
-  white-space: pre-line;
-
-  &.wrap-sm {
-    // box-model
-    max-width: 78%;
-  }
-  &.wrap-md {
-    // box-model
-    max-width: 92%;
-  }
-  &.wrap-lg {
-    // box-model
-    max-width: 95%;
-  }
-}
-
-.heading {
-  // box-model
-  margin-bottom: 0.5em;
-  // type
-  // font-size: var(--fs-heading);
-  font-weight: var(--fw-bold);
-  font-family: var(--ff-heading);
-  color: var(--clr-primary-900);
-  line-height: 1;
-}
-
-.name {
-  // type
-  // font-size: var(--fs-name);
-  font-weight: var(--fw-bold);
-  font-family: var(--ff-heading);
-  color: var(--clr-neutral-200);
-  text-shadow: 0 0 2px var(--clr-halation);
-  line-height: 1;
-}
-
-.sectionHeading {
-  // display
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  // box-model
-  padding: 0.5em 0;
-  padding-top: 7.5em;
-  margin: 1rem;
-  // type
-  text-align: center;
-  &.noMarginBot {
-    // box-model
-    margin-bottom: 0;
-  }
-}
-
-.poster-accent {
-  // display
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  // grid-area
-  grid-row-start: r1c1;
-  grid-column-start: r1c1;
-  grid-row-end: r1c4;
-  grid-column-end: r1c4;
-  // box-model
-  padding-bottom: 0.5rem;
-  // type
-  // font-size: var(--fs-body);
+.base-body {
+  font-size: var(--fs-body);
   font-weight: var(--fw-skinny);
   font-family: var(--ff-body);
-  color: var(--clr-accent-400);
-  text-align: center;
-  letter-spacing: var(--letter-spacing);
-
-  &.bottom {
-    // @media (max-width: $media-350){
-    //   display:flex;
-    //   flex-direction: column;
-    // }
-
-    // display:flex;
-    //   flex-direction: column;
-    display: inline-block;
-
-    // display
-    justify-self: center;
-    // grid-area
-    grid-row-start: r8c1;
-    grid-column-start: r8c1;
-    grid-row-end: r8c4;
-    grid-column-end: r8c4;
-    // box-model
-    max-width: 73vw;
-    margin-bottom: 3em;
-    // type
-    // font-size: var(--fs-200);
-    text-align: center;
-    letter-spacing: var(--letter-spacing);
-  }
-  &.typewriter {
-    // grid-area
-    grid-row-start: r1c2;
-    grid-column-start: r1c2;
-    grid-row-end: r1c3;
-    grid-column-end: r1c3;
-    // box-model
-    padding-top: 1.5rem;
-    // type
-    font-family: var(--ff-body);
-    // font-size: var(--fs-title);
-  }
+  color: var(--clr-primary-250);
 }
 
-.link-color {
-  &.link-primary-900 {
-    color: var(--clr-primary-900);
-  }
+.base-sub {
+  font-size: var(--fs-sub);
+  font-weight: var(--fw-regular);
+  font-family: var(--ff-sub);
+  color: var(--clr-primary-250);
 }
 
-.switch-text {
-  color: var(--clr-primary-400);
-  text-shadow: 0 0 1px var(--clr-primary-900);
-  font-weight: var(--fw-bold);
-  margin: 0 auto;
-
-  &.--active {
-    color: var(--clr-accent-400);
-    text-shadow: 0 0 1px var(--clr-accent-400);
-    font-weight: var(--fw-semi-bold);
-    background: var(--clr-primary-900);
-    padding: calc(0.25 * var(--padding)) var(--padding);
-    border-radius: 3rem;
-  }
+.base-title {
+  font-size: var(--fs-title);
+  font-weight: var(--fw-skinny);
+  font-family: var(--ff-title);
+  color: var(--clr-primary-250);
 }
 
-.button-accent {
-  //box-model
-  padding: var(--padding);
-  background-color: var(--clr-accent-400);
+.style-button {
+  padding-inline: var(--padding-3);
   border-radius: 1.5rem;
 }
+
+// flex utility
+
+.full-vh {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.flex-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+// .flex-footer {
+//   // display: flex;
+//   // flex-grow: 1;
+//   // flex-direction: column;
+//   // justify-content: flex-end;
+//   // align-items: stretch;
+// }
+
+.text-center{
+  text-align: center;
+}
+
+.padding-3 {
+  padding: var(--padding-3);
+}
+
+.padding-3-block {
+  padding-block: var(--padding-3);
+}
+
+// -------------
+// Media Queries
+// -------------
 
 @media (min-width: 50em) and (max-width: 64em) {
   :root {
     --fs-200: 1.5rem;
-    --fs-300: 1.8rem;
     --fs-400: 2.3rem;
-    --fs-450: 2.6rem;
-    --fs-500: 3.1rem;
     --fs-600: 3.8rem;
-    --fs-700: 4.4rem;
     --fs-800: 6.3rem;
-    --fs-900: 11.3rem;
 
     --fs-200: clamp(1.5rem, -0.448rem + 2vw, 1.6rem);
-    --fs-300: clamp(1.8rem, -5.992rem + 8vw, 2.2rem);
     --fs-400: clamp(2.3rem, 0.352rem + 2vw, 2.4rem);
-    --fs-450: clamp(2.6rem, -1.296rem + 4vw, 2.8rem);
-    --fs-500: clamp(3.1rem, -2.744rem + 6vw, 3.4rem);
     --fs-600: clamp(3.8rem, -2.044rem + 6vw, 4.1rem);
-    --fs-700: clamp(4.4rem, -1.444rem + 6vw, 4.7rem);
     --fs-800: clamp(6.3rem, -3.44rem + 10vw, 6.8rem);
-    --fs-900: clamp(11.3rem, -6.232rem + 18vw, 12.2rem);
   }
 }
 
 @media (min-width: 64em) {
   :root {
     --fs-200: 1.6rem;
-    --fs-300: 2.2rem;
     --fs-400: 2.4rem;
-    --fs-450: 2.8rem;
-    --fs-500: 3.4rem;
     --fs-600: 4.1rem;
-    --fs-700: 4.7rem;
     --fs-800: 6.8rem;
-    --fs-900: 12.2rem;
+    --fs-800: 15rem;
   }
 }
 
+// ---------------
 // Utility Classes
-.text-primary-200 {
-  color: var(--clr-primary-200);
-}
-.text-primary-400 {
-  color: var(--clr-primary-400);
-}
-.text-primary-900 {
-  color: var(--clr-primary-900);
-}
-
-.text-neutral-200 {
-  color: var(--clr-neutral-200);
-}
-.text-neutral-400 {
-  color: var(--clr-neutral-400);
-}
-.text-neutral-900 {
-  color: var(--clr-neutral-900);
-}
-
-.text-accent-400 {
-  color: var(--clr-accent-400);
-}
-
-.bg-primary-200 {
-  background-color: var(--clr-primary-200);
-}
-.bg-primary-400 {
-  background-color: var(--clr-primary-400);
-}
-.bg-primary-900 {
-  background-color: var(--clr-primary-900);
-}
-
-.bg-neutral-200 {
-  background-color: var(--clr-neutral-200);
-}
-.bg-neutral-400 {
-  background-color: var(--clr-neutral-400);
-}
-.bg-neutral-900 {
-  background-color: var(--clr-neutral-900);
-}
-
-.bg-accent-400 {
-  background-color: var(--clr-accent-400);
-}
-
-.box-shadow-dark {
-  box-shadow: var(--clr-dark) 0.2rem 0.3rem 0.6rem 0.1rem;
-}
-
-.text-shadow-halation {
-  text-shadow: 0 0 2px var(--clr-halation);
-}
-
-.text-shadow-halation-dark {
-  text-shadow: 0 0 2px var(--clr-dark);
-}
-
-.svg-shadow-halation-dark {
-  -webkit-filter: drop-shadow(0 0 1px var(--clr-dark));
-  filter: drop-shadow(0 0 1px var(--clr-dark));
-  /* Similar syntax to box-shadow */
-}
-
-.text-shadow-accent-900 {
-  text-shadow: 1px 1px 2px var(--clr-accent-900);
-}
-
 // ---------------
-// Styling Classes
-// ---------------
+
+// Text Colors
+.text-primary-250 {
+  color: var(--clr-primary-250);
+}
+.text-primary-750 {
+  color: var(--clr-primary-750);
+}
+.text-secondary-500 {
+  color: var(--clr-secondary-500);
+}
+
+// BG Colors
+.bg-primary-250 {
+  background-color: var(--clr-primary-250);
+}
+.bg-primary-750 {
+  background-color: var(--clr-primary-750);
+}
+.bg-secondary-500 {
+  background-color: var(--clr-secondary-500);
+}
 
 // Font Family
 .ff-title {
