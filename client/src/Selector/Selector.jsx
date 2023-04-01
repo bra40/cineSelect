@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./selector.scss";
 
 function Selector() {
+  const [films, setFilms] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/film_dict")
+      .then((response) => response.json())
+      .then((films) => setFilms(films));
+  }, []);
+
   return (
     <div>
       <div className="flex-center">
@@ -12,24 +20,22 @@ function Selector() {
         </button>
       </div>
       <div className="SelectorContainer">
-        <div className="poster-one">
-          <img src="" alt="" className="poster-one" />
-        </div>
-        <div className="poster-two">
-          <img src="" alt="" className="poster-two" />
-        </div>
-        <div className="poster-three">
-          <img src="" alt="" className="poster-one" />
-        </div>
-        <div className="num-one">
-          <h1 className="rank-a base-title">#</h1>
-        </div>
-        <div className="num-two">
-          <h1 className="rank-b base-title">#</h1>
-        </div>
-        <div className="num-three">
-          <h1 className="rank-c base-title">#</h1>
-        </div>
+        {films.map((film, index) => (
+          <div key={index} className={`poster-${index + 1}`}>
+            <img
+              src={film.Poster_url}
+              alt={film.Film_title}
+              className={`poster-${index + 1}`}
+            />
+            <div className="film-info">
+              <h2>{film.Film_title}</h2>
+              <p>
+                {film.Director} ({film.Release_year})
+              </p>
+              <p>{film.Synopsis}</p>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );

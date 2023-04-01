@@ -24,3 +24,29 @@
 *[class*="rank"] {
   text-align: center;
 }
+
+.SelectorContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+[class^="poster-"] {
+  position: relative;
+
+  .film-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  &:hover .film-info {
+    opacity: 1;
+  }
+}
