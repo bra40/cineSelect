@@ -12,27 +12,25 @@ function Selector() {
 
   return (
     <div>
-      <div className="flex-center">
-        <h3 className="base-sub">click to rank</h3>
-        <h2 className="base-sub">User One’s Preferences</h2>
-        <button className="SelectorButtonNext base-button style-button">
-          Next
-        </button>
-      </div>
       <div className="SelectorContainer">
         {films.map((film, index) => (
-          <div key={index} className={`poster-${index + 1}`}>
+          <div key={index} className={`poster_${index + 1}`}>
             <img
               src={film.Poster_url}
               alt={film.Film_title}
-              className={`poster-${index + 1}`}
+              className={`poster__image_${index + 1}`}
             />
-            <div className="film-info">
-              <h2>{film.Film_title}</h2>
-              <p>
-                {film.Director} ({film.Release_year})
+            <div className="film-info flex-left">
+              <h2 className="film-info__title primary title-wrap">
+                {film.Film_title}
+              </h2>
+              <div className="film-info__details secondary">
+                <p className="film-info__director">{film.Director}</p>
+                <p className="film-info__date">{film.Release_year}</p>
+              </div>
+              <p className="film-info__synopsis p-preview-text p-wrap secondary">
+                {film.Synopsis}
               </p>
-              <p>{film.Synopsis}</p>
             </div>
           </div>
         ))}

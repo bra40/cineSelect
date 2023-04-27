@@ -1,13 +1,15 @@
-import "./App.scss";
+import "./app.scss";
 // import Landing from "./Landing/Landing";
 import Selector from "./Selector/Selector"
-import Recommendation from "./Recommendation/Recommendation"
+// import Recommendation from "./Recommendation/Recommendation"
+// import Elements from "./Elements/Elements"
 
 function App() {
   return (
     <div className="App">
       {/* <Landing/> */}
-      <Selector/>
+      {/* <Elements /> */}
+      <Selector />
       {/* <Recommendation/> */}
     </div>
   );
