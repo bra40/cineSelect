@@ -8,27 +8,32 @@ CORS(app)
 
 @app.route("/film_dict")
 def film_dict():
-    films = [{'Film_title': 'Syndromes and a Century',
-  'Release_year': 2006,
-  'Director': 'Apichatpong Weerasethakul',
-  'Average_rating': 3.98,
-  'Letterboxd URL': 'https://letterboxd.com//film/syndromes-and-a-century/',
-  'Poster_url': 'https://image.tmdb.org/t/p/w500/1XUMd93PRMUkCtE2NWn0zQb1NC6.jpg',
-  'Synopsis': 'A story about director Apichatpong Weerasethakul’s parents who were both doctors, and his memories of growing up in a hospital environment.'},
- {'Film_title': 'The White Ribbon',
-  'Release_year': 2009,
+    films = [{
+  'Film_title': 'Timecode',
+  'Release_year': 2000,
+  'Director': 'Mike Figgis',
+  'Average_rating': 2.9,
+  'Letterboxd URL': 'https://letterboxd.com//film/timecode/',
+  'Poster_url': 'https://image.tmdb.org/t/p/w500/ptGDBAMfDOxr49RSTgMClxPiHjb.jpg',
+  'Synopsis': "A production company begins casting for its next feature, and an up-and-coming actress named Rose tries to manipulate her filmmaker boyfriend, Alex, into giving her a screen test. Alex's wife, Emma, knows about the affair and is considering divorce, while Rose's girlfriend secretly spies on her and attempts to sabotage the relationship. The four storylines in the film were each shot in one take and are shown simultaneously, each taking up a quarter of the screen.",
+  'Runtime': '1h 37m'},
+ {'Film_title': 'Caché',
+  'Release_year': 2005,
   'Director': 'Michael Haneke',
-  'Average_rating': 4.07,
-  'Letterboxd URL': 'https://letterboxd.com//film/the-white-ribbon/',
-  'Poster_url': 'https://image.tmdb.org/t/p/w500/54dlnGDexrwAFlDb8HWKfmmX4LB.jpg',
-  'Synopsis': 'Strange events happen in a small village in the north of Germany during the years just before World War I, which seem to be ritual punishment. The abused and suppressed children of the villagers seem to be at the heart of this mystery.'},
- {'Film_title': "Borat: Cultural Learnings of America for Make Benefit Glorious Nation of Kazakhstan",
-  'Release_year': 2017,
-  'Director': 'Hong Sang-soo',
-  'Average_rating': 3.39,
-  'Letterboxd URL': 'https://letterboxd.com//film/claires-camera/',
-  'Poster_url': 'https://image.tmdb.org/t/p/w500/n12X1HWLOLQXmh781WvG8McLuDI.jpg',
-  'Synopsis': "Claire, a school teacher with a camera is on her first visit to Cannes. She happens upon a film sales assistant, Manhee, recently laid off after a one-night stand with a film director. Together, this unlikely pair become detectives of sorts, as they wander around the seaside resort town, working to better understand the circumstances of Manhee's firing."}]
+  'Average_rating': 3.95,
+  'Letterboxd URL': 'https://letterboxd.com//film/cache/',
+  'Poster_url': 'https://image.tmdb.org/t/p/w500/fnuAk6Or34FLYQDnh7Et51UvSXK.jpg',
+  'Synopsis': 'A married couple is terrorized by a series of videotapes planted on their front porch.',
+  'Runtime': '1h 57m'},
+ {'Film_title': 'The Man Who Shot Liberty Valance',
+  'Release_year': 1962,
+  'Director': 'John Ford',
+  'Average_rating': 4.15,
+  'Letterboxd URL': 'https://letterboxd.com//film/the-man-who-shot-liberty-valance/',
+  'Poster_url': 'https://image.tmdb.org/t/p/w500/4C1R0LEivLjbv3swAzJfzh0tzXl.jpg',
+  'Synopsis': 'A senator, who became famous for killing a notorious outlaw, returns for the funeral of an old friend and tells the truth about his deed.',
+  'Runtime': '2h 3m'
+  }]
 
     return jsonify(films)
 

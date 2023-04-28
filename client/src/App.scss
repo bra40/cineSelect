@@ -21,83 +21,39 @@
   --ff-secondary: var(--ff-400);
 
   // Font Weight
-  --fw-skinny: 100;
-  --fw-regular: 500;
+  --fw-skinny: 300;
+  --fw-regular: 400;
   --fw-bold: 900;
 
   // Spacing
   --letter-spacing: 0.2em;
 
   // Padding
-  --padding-1: 1rem;
+  --padding-1: 1em;
   --padding-2: calc(2 * var(--padding-1));
   --padding-3: calc(3 * var(--padding-1));
 
-  // Padding
-  --padding-em-1: 1em;
-  --padding-em-2: calc(2 * var(--padding-em-1));
-  --padding-em-3: calc(3 * var(--padding-em-1));
-
+  --fs-100: 1.1rem; //text #body
   --fs-200: 1.2rem; //h6 #light
-  --fs-300: 1.6rem; //h5 #secondary
-  --fs-400: 2rem; //h4 #primary
+  --fs-300: 1.5rem; //h5 #secondary
+  --fs-400: 1.6rem; //h4 #primary
   --fs-600: 3rem; //h2 #ranking
   --fs-800: 8rem; //h1 #heavy
 
-  // --fs-200: 1.6rem; //h6 #light
-  // --fs-250: 1.866rem; //inbetweener
-  // --fs-300: 2.133rem; //h5 #secondary
-  // --fs-400: 2.8rem;   //h4 #primary
-  // --fs-600: 4.232rem;   //h2 #ranking
-  // --fs-800: 8.465rem;   //h1 #heavy
+  // THE OTHER GOOD ONE
+  // --fs-200: 1.2rem; //h6  #light
+  // --fs-300: 1.6rem; //h5  #secondary
+  // --fs-400: 2.1rem; //h4  #primary
+  // --fs-600: 3.175rem; //h2  #ranking
+  // --fs-900: 6.35rem; //h1  #heavy
 
-  --fs-200: 1.2rem; //h6  #light
-  --fs-300: 1.6rem; //h5  #secondary
-  --fs-400: 2.1rem; //h4  #primary
-  --fs-600: 3.175rem; //h2  #ranking
-  --fs-900: 6.35rem; //h1  #heavy
-
-  // --fs-200: 2.8rem;     //h6  #light
-  // --fs-300: 3.733rem;   //h5  #secondary
-  // --fs-400: 4.9rem;   //h4  #primary
-  // --fs-600: 7.407rem;   //h2  #ranking
-  // --fs-900: 14.815rem;  //h1  #heavy
-
-  // ratio: 1.333
-
-  // --fs-200: 2.4rem;
-  // --fs-300: 3.3325rem;
-  // --fs-400: 4.565525rem;
-  // --fs-600: 7.39815rem;
-  // --fs-900: 16.46255rem;
-
-  // experimental clamp transitions
-  // --fs-200: clamp(1.2rem, -3.3rem + 6vw, 1.5rem);
-  // --fs-400: clamp(1.8rem, -5.7rem + 10vw, 2.3rem);
-  // --fs-600: clamp(3rem, -9rem + 16vw, 3.8rem);
-  // --fs-800: clamp(5rem, -14.5rem + 26vw, 6.3rem);
-
-  // Font Size
-  // --fs-button: var(--fs-200);
-  // --fs-body: var(--fs-400);
-  // --fs-sub: var(--fs-600);
-  // --fs-title: var(--fs-800);
-
+  --fs-body: var(--fs-100);
   --fs-light: var(--fs-200);
   --fs-secondary: var(--fs-300);
   --fs-primary: var(--fs-400);
   --fs-ranking: var(--fs-600);
   --fs-heavy: var(--fs-900);
-
-  // --NavDynamicHeight: 0;
 }
-// MediaQueries
-// $media-250: 30em;
-// $media-300: 35em;
-// $media-350: 40.25em;
-// $media-400: 50em;
-// $media-600: 60em;
-// $media-800: 84em;
 
 //Reset
 html {
@@ -255,11 +211,19 @@ a {
   transform: scale(0.95);
 }
 
-.secondary {
-  font-size: var(--fs-secondary);
-  font-weight: var(--fw-skinny);
+.body-text {
+  font-size: var(--fs-body);
+  font-weight: var(--fw-regular);
   font-family: var(--ff-secondary);
 }
+
+.secondary {
+  font-size: var(--fs-secondary);
+  font-weight: var(--fw-regular);
+  font-family: var(--ff-secondary);
+  // font-family: 'Lato', sans-serif;
+}
+
 .primary {
   font-size: var(--fs-primary);
   font-weight: var(--fw-regular);
@@ -318,10 +282,6 @@ a {
   padding-block: var(--padding-3);
 }
 
-.p-wrap {
-  max-width: 25ch;
-}
-
 .title-wrap {
   max-width: 15ch;
   word-wrap: break-word;
@@ -329,19 +289,17 @@ a {
 }
 
 .p-preview-text {
-
   display: block;
   display: -webkit-box;
   /*! autoprefixer: off */
   -webkit-box-orient: vertical;
   max-width: minmax(20em, 25ch);
-  font-size: 20px;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  
+
   text-overflow: ellipsis;
-  word-break: break-all;
+  word-break: normal;
 }
 
 // ---------------
