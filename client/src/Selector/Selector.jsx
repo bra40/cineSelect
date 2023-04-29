@@ -31,7 +31,7 @@ function Selector() {
                 </div>
                 <p className="film-info__director body-text">{film.Director}</p>
                 <div className="film-info__details body-text">
-                  <p className="film-runtime">{film.Runtime}</p>
+                  <p className="film-info__runtime">{film.Runtime}</p>
                   <p className="film-info__date">{film.Release_year}</p>
                 </div>
                 <div className="four_line_container body-text">

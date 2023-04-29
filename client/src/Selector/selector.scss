@@ -70,10 +70,9 @@
   justify-content: center;
   align-items: flex-start;
 
-  padding: 1em 0.8em;
+  padding: 0.8em;
   gap: 0.5em;
-  width: 45vw;
-  width: clamp(20em, 45vw, 30em);
+  width: clamp(20em, 68vw, 32em);
 
   border-radius: 0.65rem;
   overflow: hidden;
@@ -136,6 +135,15 @@
   &__date {
     white-space: nowrap;
   }
+  &__runtime {
+    // border: palegreen 2px solid;
+    // grid-area: film-director;
+    min-width: 4ch;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
   &__director {
     // border: palegreen 2px solid;
     // grid-area: film-director;
@@ -155,7 +163,7 @@
   }
 
   .two_line_container {
-    min-height: 2.6em;
+    min-height: 2.2em;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -164,7 +172,7 @@
   }
 
   .four_line_container {
-    min-height: 6.6em;
+    min-height: 6em;
     display: flex;
     justify-content: center;
     align-items: center;
