@@ -13,4 +13,7 @@ npm start
 cd client && npm start
 
 # Run Python
-flask/venv/bin/activate
+cd flask
+source venv/bin/activate
+
+cd flask && source venv/bin/activate

@@ -180,3 +180,43 @@
     // border: salmon 2px solid;
   }
 }
+
+
+.film-details-aside {
+  position: fixed;
+  bottom: -100%;
+  left: 0;
+  right: 0;
+  height: 200%;
+  background-color: var( --clr-secondary-850);
+  padding: 2rem;
+  // transform: translateY(100%);
+  // transition: transform 03s ease-in-out;
+
+  // &.visible {
+    // transform: translateY(0);
+    // transition: transform 03s ease-in-out;
+  // }
+}
+.drag-container{
+  min-height: 3em;
+  min-width: 3em;
+  // background-color: cadetblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.button_container{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.line_div_drag {
+  background-color: var(--clr-primary-250);
+  border-radius: 50%;
+  height: 1px;
+  // margin-bottom: 3em;
+  // min-width: 100%;
+  width:100%;
+}

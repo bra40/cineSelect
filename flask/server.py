@@ -1,62 +1,79 @@
-from flask import Flask, jsonify
+import time
 from flask_cors import CORS
+from apscheduler.schedulers.background import BackgroundScheduler
+from flask import Flask, jsonify
 import make_film_list
 
+# films watched url
+url_watched = 'https://letterboxd.com/BrunardoTheGoat/films/'
+
+# letterboxd list urls
+url_one = 'https://letterboxd.com/brunardothegoat/list/check-out-this-filmmaker/'
+url_two = 'https://letterboxd.com/brunardothegoat/list/on-my-radar/'
+url_three = 'https://letterboxd.com/brunardothegoat/list/new-finds/'
+
+
+# scrape watched films
+watched = make_film_list.get_watched_films(url_watched)
+print('\n\nget_watched_films_OG: Completed at', time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
+
+# scrape letterboxd lists
+listOne, listTwo, listThree = make_film_list.get_lists(url_one, url_two, url_three, watched)
+print('\n\nget_lists_OG: Completed at', time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
+
+# get film options
+the_films = make_film_list.get_options(listOne, listTwo, listThree)
+
+# print the film list
+make_film_list.print_films(the_films)
+print('\n\nget_options_OG: Completed at', time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
+
+
+# Define the functions to schedule
+def get_watched_films_job():
+    global watched
+    print("\nScheduler is alive!")
+    watched = make_film_list.get_watched_films(url_watched)
+    print('\n\n\nget_watched_films_job: Completed at', time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
+
+def get_lists_job():
+    global listOne, listTwo, listThree
+    print("\nScheduler is alive!")
+    print(watched)
+    listOne, listTwo, listThree = make_film_list.get_lists(url_one, url_two, url_three, watched)
+    print('\n\n\nget_lists_job: Completed at', time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
+
+def get_options_job():
+    global the_films
+    print("\nScheduler is alive!")
+    the_films = make_film_list.get_options(listOne, listTwo, listThree)
+    make_film_list.print_films(the_films)
+    print('\n\n\nget_options_job: Completed at', time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
+
+# Schedule the functions
+sched = BackgroundScheduler(daemon=True)
+sched.add_job(get_watched_films_job, 'cron', hour=4)
+sched.add_job(get_lists_job, 'cron', hour=4)
+sched.add_job(get_options_job, 'interval', minutes=15)
+sched.start()
 
 app = Flask(__name__)
 CORS(app)
 
-the_films = make_film_list.get_films()
-
-for film in the_films:
-  title = film['Film_title']
-  director = film['Director']
-  year = film['Release_year']
-  runtime = film['Runtime']
-  print(f'{title} was directed by {director} in {year}. ({runtime})')
-
-
-
 @app.route("/film_dict")
 def film_dict():
-    # Call the make_list function to generate the film_list dictionary
+    # The film_list dictionary
     films = the_films
-    print(films)
-#     films = [{
-#   'Film_title': 'Timecode',
-#   'Release_year': 2000,
-#   'Director': 'Mike Figgis',
-#   'Average_rating': 2.9,
-#   'Letterboxd URL': 'https://letterboxd.com//film/timecode/',
-#   'Poster_url': 'https://image.tmdb.org/t/p/w500/ptGDBAMfDOxr49RSTgMClxPiHjb.jpg',
-#   'Synopsis': "A production company begins casting for its next feature, and an up-and-coming actress named Rose tries to manipulate her filmmaker boyfriend, Alex, into giving her a screen test. Alex's wife, Emma, knows about the affair and is considering divorce, while Rose's girlfriend secretly spies on her and attempts to sabotage the relationship. The four storylines in the film were each shot in one take and are shown simultaneously, each taking up a quarter of the screen.",
-#   'Runtime': '1h 37m'},
-#  {'Film_title': 'Caché',
-#   'Release_year': 2005,
-#   'Director': 'Michael Haneke',
-#   'Average_rating': 3.95,
-#   'Letterboxd URL': 'https://letterboxd.com//film/cache/',
-#   'Poster_url': 'https://image.tmdb.org/t/p/w500/fnuAk6Or34FLYQDnh7Et51UvSXK.jpg',
-#   'Synopsis': 'A married couple is terrorized by a series of videotapes planted on their front porch.',
-#   'Runtime': '1h 57m'},
-#  {'Film_title': 'The Man Who Shot Liberty Valance',
-#   'Release_year': 1962,
-#   'Director': 'John Ford',
-#   'Average_rating': 4.15,
-#   'Letterboxd URL': 'https://letterboxd.com//film/the-man-who-shot-liberty-valance/',
-#   'Poster_url': 'https://image.tmdb.org/t/p/w500/4C1R0LEivLjbv3swAzJfzh0tzXl.jpg',
-#   'Synopsis': 'A senator, who became famous for killing a notorious outlaw, returns for the funeral of an old friend and tells the truth about his deed.',
-#   'Runtime': '2h 3m'
-#   }]
-
     return jsonify(films)
+
 
 @app.route("/")
 def home():
-    s = film_dict()
-    return s
+    output_film_dict = film_dict()
+    return output_film_dict
 
-if __name__ == "main":
-    msg = "main"
-    print(msg)
+
+if __name__ == "__main__":
+
+    # Run the Flask app
     app.run(debug=True)

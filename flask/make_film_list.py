@@ -266,6 +266,25 @@ def get_poster_url(title, year=None, director=None):
   data = response.json()
   return f'https://image.tmdb.org/t/p/w500{data["poster_path"]}'
 
+def get_backdrop_url(title, year=None, director=None):
+  """
+  Searches for a movie by its title and returns the poster URL.
+  
+  :param title: str
+      Movie title to search for
+  :param year: int, optional
+      Release year of the movie
+  :param director: str, optional
+      Director of the movie
+  :return: str
+      Poster URL
+  """
+  api_key = '6b17a09aed846d2e8d5f46e555aabb7a'
+  movie_id = get_tmdb_movie_id(api_key, title, year, director)[0]
+  url = f'https://api.themoviedb.org/3/movie/{movie_id}?api_key={api_key}'
+  response = requests.get(url)
+  data = response.json()
+  return f'https://image.tmdb.org/t/p/w500{data["backdrop_path"]}'
 
 def get_synopsis(title, year=None, director=None):
     """
@@ -316,28 +335,34 @@ def get_movie_runtime(title, year=None, director=None):
   formatted_runtime = format_duration(runtime)
   return formatted_runtime
 
+def print_films(film_list):
+  for film in film_list:
+    title = film['Film_title']
+    director = film['Director']
+    year = film['Release_year']
+    runtime = film['Runtime']
+    print(f'{title} was directed by {director} in {year}. ({runtime})')
+
 # 3. Watchlist
-def get_watched_films():
+def get_watched_films(url_watched):
     # Choose and scrape watchlist
-    my_list_url = 'https://letterboxd.com/BrunardoTheGoat/films/'
+    my_list_url = url_watched
     scrape_list_url(my_list_url)
     watched = current_list
     return watched
 
-watched = get_watched_films()
-
-#4. Get Film List
-def get_films():
+#4. Get Lists
+def get_lists(url_one, url_two, url_three, watched):
     # Choose Lists to Scrape
-    my_list_url = 'https://letterboxd.com/brunardothegoat/list/check-out-this-filmmaker/'
+    my_list_url = url_one
     scrape_list_url(my_list_url)
     list_one = current_list
 
-    my_list_url = 'https://letterboxd.com/brunardothegoat/list/on-my-radar/'
+    my_list_url = url_two
     scrape_list_url(my_list_url)
     list_two = current_list
 
-    my_list_url = 'https://letterboxd.com/brunardothegoat/list/new-finds/'
+    my_list_url = url_three
     scrape_list_url(my_list_url)
     list_three = current_list
 
@@ -361,6 +386,10 @@ def get_films():
     result = merged_df[merged_df['_merge'] == 'left_only']
     listThree = result.drop(columns=['_merge'])
     
+    return (listOne, listTwo, listThree)
+
+#5. Get Options
+def get_options(listOne, listTwo, listThree):
     # no unwatched rows
     if listOne.empty and listTwo.empty and listThree.empty:
       raise ValueError("There must be unseen films in the list")
@@ -416,6 +445,7 @@ def get_films():
       film_year = film.get('Release_year')
       film_director = film.get('Director')
       film['Poster_url'] = get_poster_url(film_title, film_year, film_director)
+      film['Backdrop_url'] = get_backdrop_url(film_title, film_year, film_director)
       film['Synopsis'] = get_synopsis(film_title, film_year, film_director)
       film['Runtime'] = get_movie_runtime(film_title, film_year, film_director)
       del film['Cast']
