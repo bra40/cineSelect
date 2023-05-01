@@ -1,4 +1,4 @@
-.selector-container {
+.SelectorContainer {
   display: grid;
   grid-template-columns: 1fr;
   grid-auto-rows: minmax(100px, auto);
@@ -11,7 +11,7 @@
   padding: 3em;
 }
 
-[class^="film-option_"] {
+[class^="poster_"] {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -22,25 +22,25 @@
   padding-inline: var(--padding-2);
 }
 
-[class^="film-section__"] {
+[class^="film_option_"] {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-[class^="line-div__"] {
+[class^="line_div_"] {
   background-color: var(--clr-primary-250);
   border-radius: 50%;
   height: 1px;
   margin-bottom: 3em;
   // min-width: 100%;
-  width: clamp(20em, 100%, 43em);
+  width: 100%;
 }
-.line-div__1 {
+.line_div_1 {
   display: none;
 }
 
-.film-poster {
+.this_img_container {
   height: 100%;
   // width: 99%;
 
@@ -57,7 +57,7 @@
   // background-image:url(http://placekitten.com/900/900); background-size:cover;
 }
 
-[class^="film-option__image_"] {
+[class^="poster__image_"] {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -139,6 +139,8 @@
     white-space: nowrap;
   }
   &__runtime {
+    // border: palegreen 2px solid;
+    // grid-area: film-director;
     min-width: 4ch;
     white-space: nowrap;
     overflow: hidden;
@@ -146,38 +148,49 @@
   }
 
   &__director {
+    // border: palegreen 2px solid;
+    // grid-area: film-director;
     min-width: 7ch;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
+  // &__date {
+  //   border: turquoise 2px solid;
+  //   // grid-area: film-year;
+  // }
 
   &__synopsis {
     max-width: 30ch;
+    //  border: chartreuse 2px solid;
   }
 
-  .two-line-container {
+  .two_line_container {
     min-height: 2.2em;
     display: flex;
     justify-content: center;
     align-items: center;
 
     width: 100%;
+
+    // border: salmon 2px solid;
   }
-  @media (max-width: 39rem) {
-    .two-line-container {
+  @media (max-width: 400px) {
+    .two_line_container {
       min-height: 1.2em;
     }
   }
 
-  .four-line-container {
+  .four_line_container {
     min-height: 6em;
     display: flex;
     justify-content: center;
     align-items: center;
+    // background-color: greenyellow;
+    // border: salmon 2px solid;
   }
-  @media (max-width: 39rem) {
-    .four-line-container {
+  @media (max-width: 400px) {
+    .four_line_container {
       min-height: 2.2em;
     }
   }
@@ -191,10 +204,18 @@
   height: 200%;
   background-color: var(--clr-secondary-850);
   padding: 2rem;
+  // transform: translateY(100%);
+  // transition: transform 03s ease-in-out;
+
+  // &.visible {
+  // transform: translateY(0);
+  // transition: transform 03s ease-in-out;
+  // }
 }
 .drag-container {
   min-height: 3em;
   min-width: 3em;
+  // background-color: cadetblue;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -205,10 +226,12 @@
   justify-content: center;
   align-items: center;
 }
-.line-div__drag {
+.line_div_drag {
   background-color: var(--clr-primary-250);
   border-radius: 50%;
   height: 1px;
+  // margin-bottom: 3em;
+  // min-width: 100%;
   width: 100%;
 }
 
