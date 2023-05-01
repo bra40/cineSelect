@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import SelectorSkeleton from "../Skeletons/SelectorSkeleton"
 import "./selector.scss";
 
 function Selector() {
@@ -31,13 +32,15 @@ function Selector() {
 
   return (
     <div>
+      {/* <SelectorSkeleton /> */}
+      <div className="flex-center selector-wrapper-padding">
+        <h3 className="secondary lowercase">click to rank</h3>
+        <h2 className="primary capitalize">user one’s preferences</h2>
+      </div>
       <div className="SelectorContainer">
         {films.map((film, index) => (
           // <div key={index} className={`poster_${index + 1}`}>
-          <div
-            className={`film_option_${index + 1}`}
-            onClick={() => handleFilmClick(film)}
-          >
+          <div key={index} className={`film_option_${index + 1}`}>
             <div className={`line_div_${index + 1}`} />
             <div key={index} className={`poster_${index + 1}`}>
               <div
@@ -47,7 +50,7 @@ function Selector() {
               />
               <div className="film-info flex-left">
                 <div className="two_line_container secondary">
-                  <h2 className="film-info__title secondary">
+                  <h2 className="film-info__title t-preview-text secondary">
                     {film.Film_title}
                   </h2>
                 </div>
@@ -57,7 +60,10 @@ function Selector() {
                   <p className="film-info__date">{film.Release_year}</p>
                 </div>
                 <div className="four_line_container body-text">
-                  <p className="film-info__synopsis p-preview-text body-text fw-skinny">
+                  <p
+                    className="film-info__synopsis p-preview-text body-text fw-skinny"
+                    onClick={() => handleFilmClick(film)}
+                  >
                     {film.Synopsis}
                   </p>
                 </div>
@@ -107,6 +113,9 @@ function Selector() {
           </motion.aside>
         )}
       </AnimatePresence>
+      <div className="flex-center selector-wrapper-padding">
+        <button className="SelectorButtonNext button">Submit Rankings</button>
+      </div>
     </div>
   );
 }

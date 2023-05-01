@@ -3,9 +3,12 @@
   grid-template-columns: 1fr;
   grid-auto-rows: minmax(100px, auto);
   grid-gap: 3em;
-  padding-block: 2em;
+  // padding-block: 2em;
   padding-inline: 2em;
   // border: red 3px dotted;
+}
+.selector-wrapper-padding {
+  padding: 3em;
 }
 
 [class^="poster_"] {
@@ -31,7 +34,7 @@
   height: 1px;
   margin-bottom: 3em;
   // min-width: 100%;
-  width:100%;
+  width: 100%;
 }
 .line_div_1 {
   display: none;
@@ -168,7 +171,14 @@
     justify-content: center;
     align-items: center;
 
+    width: 100%;
+
     // border: salmon 2px solid;
+  }
+  @media (max-width: 400px) {
+    .two_line_container {
+      min-height: 1.2em;
+    }
   }
 
   .four_line_container {
@@ -179,8 +189,12 @@
     // background-color: greenyellow;
     // border: salmon 2px solid;
   }
+  @media (max-width: 400px) {
+    .four_line_container {
+      min-height: 2.2em;
+    }
+  }
 }
-
 
 .film-details-aside {
   position: fixed;
@@ -188,17 +202,17 @@
   left: 0;
   right: 0;
   height: 200%;
-  background-color: var( --clr-secondary-850);
+  background-color: var(--clr-secondary-850);
   padding: 2rem;
   // transform: translateY(100%);
   // transition: transform 03s ease-in-out;
 
   // &.visible {
-    // transform: translateY(0);
-    // transition: transform 03s ease-in-out;
+  // transform: translateY(0);
+  // transition: transform 03s ease-in-out;
   // }
 }
-.drag-container{
+.drag-container {
   min-height: 3em;
   min-width: 3em;
   // background-color: cadetblue;
@@ -206,7 +220,7 @@
   justify-content: center;
   align-items: center;
 }
-.button_container{
+.button_container {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -218,5 +232,47 @@
   height: 1px;
   // margin-bottom: 3em;
   // min-width: 100%;
-  width:100%;
+  width: 100%;
+}
+
+// skeleton styling
+
+.skeleton-details {
+  min-width: 100%;
+  justify-content: space-between;
+  gap: 3em;
+  display: grid;
+  grid-template-columns: 0.5fr 0.5fr;
+  gap: 0px 0.5em;
+}
+.skeleton-container {
+  min-width: 100%;
+  justify-content: space-between;
+  gap: 3em;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+.skeleton-flex {
+  flex: 1;
+}
+.skeleton-container .skeleton-title {
+  width: 80%;
+}
+.skeleton-details .skeleton-name {
+  width: 60%;
+}
+.skeleton-details .skeleton-date {
+  width: 30%;
+}
+.skeleton-details .skeleton-runtime {
+  width: 40%;
+}
+.skeleton-details .skeleton-right {
+  display: flex;
+  justify-content: flex-end;
+  flex: 0.5;
+}
+.skeleton-container .skeleton-center {
+  display: flex;
+  justify-content: center;
 }

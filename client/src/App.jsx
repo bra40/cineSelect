@@ -1,5 +1,6 @@
 import "./app.scss";
 // import Landing from "./Landing/Landing";
+import "react-loading-skeleton/dist/skeleton.css";
 import Selector from "./Selector/Selector"
 // import Recommendation from "./Recommendation/Recommendation"
 // import Elements from "./Elements/Elements"

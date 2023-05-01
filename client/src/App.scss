@@ -253,7 +253,7 @@ a {
   justify-content: center;
   align-items: center;
 }
-.flex-center {
+.flex-left {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -290,6 +290,11 @@ a {
 
   text-overflow: ellipsis;
   word-break: normal;
+}
+@media (max-width: 400px) {
+  .p-preview-text {
+    -webkit-line-clamp: 2;
+  }
 }
 
 // ---------------
