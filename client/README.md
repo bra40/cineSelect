@@ -7,6 +7,13 @@ flask run
 
 export FLASK_APP=server.py && flask run
 
+---
+if [ "$(pwd)" != "/Users/brunoarnabar/Documents/Websites/CineSelect/flask" ]; then
+  cd flask && export FLASK_APP=server.py && flask run
+else
+  export FLASK_APP=server.py && flask run
+fi
+
 # Run Client
 cd client && npm start
 
@@ -18,3 +25,7 @@ cd flask && source venv/bin/activate
 
 cd flask
 source venv/bin/activate
+
+# Exit Python
+Ctrl+d
+deactivate

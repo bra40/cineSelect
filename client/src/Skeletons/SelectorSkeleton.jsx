@@ -5,16 +5,13 @@ import "../Selector/selector.scss";
 import React from "react";
 
 function SelectorSkeleton() {
-
-    
   return (
-    <div className="SelectorContainer">
+    <div className="selector-container">
       <SkeletonTheme baseColor="#616161" highlightColor="#e9dfd0">
-        <div className="film_option_">
-          <div className="line_div_" />
-          <div className="poster_this">
+        <div className="film-section__">
+          <div className="film-option_this">
             <div
-              className="this_img_container"
+              className="film-poster"
               style={{ backgroundColor: "#616161" }}
             />
             <div className="film-info">

@@ -1,17 +1,67 @@
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import SelectorSkeleton from "../Skeletons/SelectorSkeleton"
+import React, { useState, useEffect, useCallback } from "react";
+import axios from "axios";
+import FilmOption from "./FilmOption";
+import FilmAside from "./FilmAside";
+import SelectorSkeleton from "../Skeletons/SelectorSkeleton";
 import "./selector.scss";
 
 function Selector() {
-  const [films, setFilms] = useState([]);
   const [selectedFilm, setSelectedFilm] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [films, setFilms] = useState([]);
+
+  const pollData = async (url, interval, maxAttempts) => {
+    let attempts = 0;
+
+    while (attempts < maxAttempts) {
+      try {
+        const result = await axios(url);
+        return result.data;
+      } catch (error) {
+        console.error(error);
+        await new Promise((resolve) => setTimeout(resolve, interval));
+        attempts++;
+      }
+    }
+
+    throw new Error(`Max attempts reached (${maxAttempts})`);
+  };
+
+  const fetchData = useCallback(async () => {
+    try {
+      const data = await pollData("http://localhost:5000/", 15000, 24);
+      setFilms(data);
+      setIsLoading(false);
+    } catch (error) {
+      console.error(error);
+    }
+  }, []);
 
   useEffect(() => {
-    fetch("http://localhost:5000/film_dict")
-      .then((response) => response.json())
-      .then((films) => setFilms(films));
-  }, []);
+    fetchData();
+  }, [fetchData]);
+
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       setIsLoading(true);
+  //       const result = await axios("http://localhost:5000/");
+  //       setFilms(result.data);
+  //       setIsLoading(false);
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   };
+
+  //   const delay = setTimeout(() => {
+  //     fetchData();
+  //   }, 60000); // wait for 1 minute (60,000 milliseconds) before making the axios call
+
+  //   return () => {
+  //     clearTimeout(delay);
+  //   };
+  // }, []);
 
   const handleFilmClick = (film) => {
     setSelectedFilm(film);
@@ -32,89 +82,43 @@ function Selector() {
 
   return (
     <div>
-      {/* <SelectorSkeleton /> */}
       <div className="flex-center selector-wrapper-padding">
         <h3 className="secondary lowercase">click to rank</h3>
-        <h2 className="primary capitalize">user one’s preferences</h2>
+        <h2 className="primary capitalize text-center">
+          user one’s preferences
+        </h2>
       </div>
-      <div className="SelectorContainer">
-        {films.map((film, index) => (
-          // <div key={index} className={`poster_${index + 1}`}>
-          <div key={index} className={`film_option_${index + 1}`}>
-            <div className={`line_div_${index + 1}`} />
-            <div key={index} className={`poster_${index + 1}`}>
-              <div
-                className="this_img_container"
-                alt={film.Film_title}
-                style={{ backgroundImage: `url(${film.Poster_url})` }}
-              />
-              <div className="film-info flex-left">
-                <div className="two_line_container secondary">
-                  <h2 className="film-info__title t-preview-text secondary">
-                    {film.Film_title}
-                  </h2>
-                </div>
-                <p className="film-info__director body-text">{film.Director}</p>
-                <div className="film-info__details body-text">
-                  <p className="film-info__runtime">{film.Runtime}</p>
-                  <p className="film-info__date">{film.Release_year}</p>
-                </div>
-                <div className="four_line_container body-text">
-                  <p
-                    className="film-info__synopsis p-preview-text body-text fw-skinny"
-                    onClick={() => handleFilmClick(film)}
-                  >
-                    {film.Synopsis}
-                  </p>
-                </div>
+      <div className="selector-container">
+        {[...Array(3)].map(
+          (_, i) =>
+            isLoading && (
+              <div key={i} className={`film-section__${i + 1}`}>
+                <div className={`line-div__${i + 1}`} />
+                <SelectorSkeleton key={i} />
               </div>
-            </div>
+            )
+        )}
+        {films.map((film, index) => (
+          <div key={index} className={`film-section__${index + 1}`}>
+            <div className={`line-div__${index + 1}`} />
+            <FilmOption
+              key={index}
+              film={film}
+              index={index}
+              handleFilmClick={handleFilmClick}
+            />
           </div>
         ))}
       </div>
-      <AnimatePresence>
-        {selectedFilm && (
-          <motion.aside
-            className={`film-details-aside ${selectedFilm ? "visible" : ""}`}
-            initial={{ translateY: "100%" }}
-            animate={{
-              translateY: "0%",
-              opacity: "100%",
-              transition: { duration: 0.75, ease: "easeOut" },
-            }}
-            exit={{
-              translateY: "100%",
-              // opacity: 0,
-              transition: {
-                duration: 0.5,
-                ease: "easeIn",
-              },
-            }}
-            drag="y"
-            dragConstraints={{ top: 0, bottom: 0 }}
-            dragElastic={0.7}
-            onDragEnd={handleDragEnd}
-          >
-            <button
-              className="secondary button_container"
-              onClick={handleAsideClose}
-            >
-              <div className="drag-container">
-                <div className="line_div_drag" />
-              </div>
-            </button>
-            <h2 className="primary">{selectedFilm.Film_title}</h2>
-            <p className="secondary">{selectedFilm.Director}</p>
-            <div className="film-info__details secondary">
-              <p>{selectedFilm.Runtime}</p>
-              <p>{selectedFilm.Release_year}</p>
-            </div>
-            <p className="secondary fw-skinny">{selectedFilm.Synopsis}</p>
-          </motion.aside>
-        )}
-      </AnimatePresence>
+
+      <FilmAside
+        selectedFilm={selectedFilm}
+        handleAsideClose={handleAsideClose}
+        handleDragEnd={handleDragEnd}
+      />
+
       <div className="flex-center selector-wrapper-padding">
-        <button className="SelectorButtonNext button">Submit Rankings</button>
+        <button className="button">Submit Rankings</button>
       </div>
     </div>
   );

@@ -445,7 +445,7 @@ def get_options(listOne, listTwo, listThree):
       film_year = film.get('Release_year')
       film_director = film.get('Director')
       film['Poster_url'] = get_poster_url(film_title, film_year, film_director)
-      film['Backdrop_url'] = get_backdrop_url(film_title, film_year, film_director)
+    #   film['Backdrop_url'] = get_backdrop_url(film_title, film_year, film_director)
       film['Synopsis'] = get_synopsis(film_title, film_year, film_director)
       film['Runtime'] = get_movie_runtime(film_title, film_year, film_director)
       del film['Cast']

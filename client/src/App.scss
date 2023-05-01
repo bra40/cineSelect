@@ -81,9 +81,9 @@ body,
 html {
   background: var(--clr-primary-750);
   color: var(--clr-primary-250);
+  min-height: 100vh;
   /* mobile viewport bug fix */
   min-height: -webkit-fill-available;
-  min-height: 100vh;
 }
 
 *,
@@ -121,6 +121,9 @@ button {
 body {
   text-rendering: optimizeSpeed;
   line-height: 1.5;
+
+  min-width: 32rem;
+  min-height: 100vh;
 }
 
 .App {
@@ -291,12 +294,11 @@ a {
   text-overflow: ellipsis;
   word-break: normal;
 }
-@media (max-width: 400px) {
+@media (max-width: 389px) {
   .p-preview-text {
     -webkit-line-clamp: 2;
   }
 }
-
 // ---------------
 // Utility Classes
 // ---------------
