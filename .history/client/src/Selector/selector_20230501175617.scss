@@ -1,0 +1,255 @@
+.selector-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: minmax(100px, auto);
+  grid-gap: 3em;
+  // padding-block: 2em;
+  padding-inline: 2em;
+  // border: red 3px dotted
+}
+.selector-wrapper-padding {
+  padding: 3em;
+}
+
+[class^="film-option_"] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  flex-direction: row;
+  gap: var(--padding-2);
+
+  padding-inline: var(--padding-2);
+}
+
+[class^="film-section__"] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+[class^="line-div__"] {
+  background-color: var(--clr-primary-250);
+  border-radius: 50%;
+  height: 1px;
+  margin-bottom: 3em;
+  // min-width: 100%;
+  width: clamp(20em, 100%, 43em);
+}
+.line-div__1 {
+  display: none;
+}
+
+.film-poster {
+  height: 100%;
+  // width: 99%;
+
+  aspect-ratio: 1/1.5;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  // width: 15rem;
+  border-radius: 0.35rem;
+  border: var(--clr-secondary-750) 0.1rem solid;
+
+  // background-image:url(http://placekitten.com/900/900); background-size:cover;
+}
+
+[class^="film-option__image_"] {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  overflow: hidden;
+  border: red 3px solid;
+}
+
+.film-info {
+  background-color: var(--clr-secondary-500);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+
+  padding: 0.8em;
+  gap: 0.5em;
+  width: clamp(20em, 68vw, 32em);
+
+  border-radius: 0.65rem;
+  overflow: hidden;
+
+  // border: cornflowerblue 2px solid;
+
+  &__title {
+    line-height: 1.2;
+    text-align: left;
+
+    white-space: wrap;
+    // overflow: hidden;
+    // text-overflow: ellipsis;
+
+    display: flex;
+    align-items: center;
+
+    display: block;
+    display: -webkit-box;
+    /*! autoprefixer: off */
+    -webkit-box-orient: vertical;
+    max-width: 20em;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+    word-break: none;
+
+    text-align: left;
+
+    -webkit-box-align: center;
+    // -webkit-box-pack: center;
+
+    // margin-block: auto;
+
+    // border: mediumseagreen 2px solid;
+  }
+
+  &__details {
+    display: flex;
+    //  flex-grow: 1;
+    //  flex-basis: 1;
+    min-width: 100%;
+    justify-content: space-between;
+    gap: 1em;
+    // background-color: steelblue;
+    white-space: normal;
+    overflow: auto;
+    //  border: mediumseagreen 2px solid;
+    //  flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    // grid-template-rows: .5em;
+    gap: 0px 0.5em;
+    grid-template-areas: "film-director film-year";
+  }
+
+  &__director,
+  &__date {
+    white-space: nowrap;
+  }
+  &__runtime {
+    min-width: 4ch;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__director {
+    min-width: 7ch;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__synopsis {
+    max-width: 30ch;
+  }
+
+  .two-line-container {
+    min-height: 2.2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+  }
+  @media (max-width: 39rem) {
+    .two-line-container {
+      min-height: 1.2em;
+    }
+  }
+
+  .four-line-container {
+    min-height: 6em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  @media (max-width: 39rem) {
+    .four-line-container {
+      min-height: 2.2em;
+    }
+  }
+}
+
+.film-details-aside {
+  position: fixed;
+  bottom: -100%;
+  left: 0;
+  right: 0;
+  height: 200%;
+  background-color: var(--clr-secondary-850);
+  padding: 2rem;
+}
+.drag-container {
+  min-height: 3em;
+  min-width: 3em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.button_container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.line-div__drag {
+  background-color: var(--clr-primary-250);
+  border-radius: 50%;
+  height: 1px;
+  width: 100%;
+}
+
+// skeleton styling
+
+.skeleton-details {
+  min-width: 100%;
+  justify-content: space-between;
+  gap: 3em;
+  display: grid;
+  grid-template-columns: 0.5fr 0.5fr;
+  gap: 0px 0.5em;
+}
+.skeleton-container {
+  min-width: 100%;
+  justify-content: space-between;
+  gap: 3em;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+.skeleton-flex {
+  flex: 1;
+}
+.skeleton-container .skeleton-title {
+  width: 80%;
+}
+.skeleton-details .skeleton-name {
+  width: 60%;
+}
+.skeleton-details .skeleton-date {
+  width: 30%;
+}
+.skeleton-details .skeleton-runtime {
+  width: 40%;
+}
+.skeleton-details .skeleton-right {
+  display: flex;
+  justify-content: flex-end;
+  flex: 0.5;
+}
+.skeleton-container .skeleton-center {
+  display: flex;
+  justify-content: center;
+}
