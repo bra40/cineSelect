@@ -7,3 +7,5 @@ venv/
 flask/venv/
 /flask/venv/
 .history/
+
+._*
